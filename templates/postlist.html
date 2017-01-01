@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url({% static 'img/1.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Kulbeer's Blog</h1>
+                        <hr class="small">
+                        <span class="subheading">A destination for the best short stories</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+ <!-- Main Content -->
+<div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% for obj in objlist %}
+                <div class="post-preview">
+                    <a href="{{ obj.get_absolute_url }}">
+                        <h2 class="post-title">
+                           {{ obj.title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ obj.content|truncatechars:120 }}
+                        </h3>
+                    </a>
+                    <p class="post-meta">{{ obj.timestamp }}</p>
+                </div>
+                <hr>
+                {% endfor %}
+                              <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                      {% if objlist.has_next %}
+                        <a href="?page={{ objlist.next_page_number }}">Older Posts &rarr;</a>
+                      {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+{% if instance.image %}
+<header class="intro-header" style="background-image: url({{ instance.image.url }})">
+{% else %}
+<header class="intro-header" style="background-image: url({% static 'img/1.jpg' %})">
+{% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>{{ instance.title }}</h1>
+                        <span class="meta">{{ instance.timestamp }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+</header>
+
+
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                    {{ instance.content|linebreaks }}
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <div class="fb-like" data-href="{{ instance.get_absolute_url }}"
+                      data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+                    {% if  request.user.is_superuser %}
+                    <a href = "{{ instance.get_absolute_url }}edit">
+                      <button type="submit" class="btn btn-default" align:"right">Edit</button>
+                    </a>
+                    <a href = "{{ instance.get_absolute_url }}delete">
+                      <button type="submit" class="btn btn-default" align:"right">Delete</button>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock %}
