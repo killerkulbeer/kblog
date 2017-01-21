@@ -1,15 +1,23 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block head %}
+
+<link rel="stylesheet" type="text/css" media="all" href="{% static 'galery/css/styles.css' %}">
+<link rel="stylesheet" type="text/css" media="all" href="{% static 'galery/css/magnific-popup.css' %}">
+<script type="text/javascript" src="{% static 'galery/js/jquery-1.11.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'galery/js/jquery.magnific-popup.min.js' %}"></script>
+
+{% endblock head %}
 
 {% block content %}
 
-<header class="intro-header" style="background-image: url({% static 'img/3.jpg' %})">
+<header class="intro-header" style="background-color: #f28281;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>Killer Kulbeer <i class="fa fa-heart-o" aria-hidden="true"></i></h1>
+                <div class="post-heading" style="padding-top:100px;padding-bottom:100px">
+                    <h1>Killer Kulbeer <i class="fa fa-heart" aria-hidden="true"></i></h1>
                 </div>
             </div>
         </div>
@@ -17,28 +25,77 @@
 </header>
 
 
-<article>
+<section>
     <div class="container">
-        <div class="column">
-            <div class="col-lg-10 col-lg-offset-0 col-md-10 col-md-offset-1">
-
-            	<div style="float:left;width:55%;">
-            		<img src="{% static 'img/123.jpg' %}" style="display:block;height:100%;width:100%;padding-left:10;" />
-            	</div>
-
-            	<div style="float:right;width:40%;padding-left:10;">
-            		d fuhdfkhdf fdufksgdsf fugdkfsf sudsugfsgds<br>
-            		gesrsgrsrh ehrhehr fsjfjsfsad fuhdfkhdf fdufksgdsf fugdkfsf sudsugfsgds<br>
-            		gesrsgrsrh ehrhehr fsjfjsfsad fuhdfkhdf fdufksgdsf fugdkfsf sudsugfsgds<br>
-            		gesrsgrsrh ehrhehr fsjfjsfsad fuhdfkhdf fdufksgdsf fugdkfsf sudsugfsgds<br>
-            		gesrsgrsrh ehrhehr fsjfjsfsad fuhdfkhdf fdufksgdsf fugdkfsf sudsugfsgds<br>
-            		gesrsgrsrh ehrhehr fsjfjsfsad fuhdfkhdf fdufksgdsf fugdkfsf sudsugfsgds<br>
-            	</div>
-                
+        <div class="row">
+            <div class="col-sm-4">
+            		<img src="{% static 'img/4.jpg' %}" style="display:block;height:100%;width:100%;padding-left:;" />
             </div>
-        </div>
-    </div>
-</article>
+            <div class="col-sm-8" style="font-size:145%">
+            		Hi! I am Kulbeer (<strong> pixy </strong> is what my friends call me).I am MCA student and a part time writter.
+                Taking selfies, listing to music, shopping are some of my labors of love. I am clumsy as hell! I have deep love for
+                dogs and good food. And I am a die hard chocoholic.
+                <br>
+                My lifestyle, which isn't necessarily perfect, but it makes me happy. Now while my grammar and punctuation might not always
+                be perfect , I love to write. I plan on posting from shayaris and quotes to short stories.
 
+           </div>
+
+        </div>
+        <hr>
+
+      </div>
+</section>
+  <section style="background-color:rgb(188, 162, 230)">
+      <div class="container" >
+        <div class="row" >
+            <div class="col-sm-7" style="font-size:135%">
+              <br><br><br><br>
+            <blockquote style="font-size:135%;color:white;">"Every verse I create, creates me.<br>
+            I write to create myself."</blockquote>
+            </div>
+            <div class="col-sm-5" style="font-size:135%">
+            		<img src="{% static 'img/123.jpg' %}" style="display:block;height:100%;width:100%;padding-top:10px;padding-bottom:10px" />
+           </div>
+
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Photo Grid Section -->
+
+<div id="wrapper">
+    <h1 style="text-align: center;">My Life In Images</h1>
+
+    <ul id="portfolio" class="clearfix">
+      <li><a href="{% static 'galery/img/item01@2x.jpg' %}" title="Brick and Bay Windows"><img src="{% static 'galery/img/item01.jpg' %}" alt="brick and by windows" style="border: 0; max-width: 100%;"></a></li>
+      <!-- https://dribbble.com/shots/1543255-Brick-and-Bay-Windows -->
+
+      <li><a href="{% static 'galery/img/item02@2x.jpg' %}" title="Simple iPad Icons"><img src="{% static 'galery/img/item02.jpg' %}" alt="old-style ipad icons" style="border: 0; max-width: 100%;"></a></li>
+      <!-- https://dribbble.com/shots/1543899-iPad-icons -->
+
+      <li><a href="{% static 'galery/img/item03@2x.jpg' %}" title="Mobile Profile"><img src="{% static 'galery/img/item03.jpg' %}" alt="mobile iphone app profile ui" style="border: 0; max-width: 100%;"></a></li>
+      <!-- https://dribbble.com/shots/1543085-Profile -->
+
+    </ul>
+  </div>
+<script type="text/javascript">
+$(function(){
+  $('#portfolio').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    image: {
+      cursor: null,
+      titleSrc: 'title'
+    },
+    gallery: {
+      enabled: true,
+      preload: [0,1], // Will preload 0 - before current, and 1 after the current image
+      navigateByImgClick: true
+		}
+  });
+});
+</script>
 
 {% endblock %}

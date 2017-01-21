@@ -3,15 +3,14 @@
 
 {% block content %}
 
-<header class="intro-header" style="background-image: url({% static 'img/1.jpg' %});length: 150px">
+<header class="intro-header" style="background-color: #562b47;">
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading">
+                    <div class="post-heading" style="padding-top:100px;padding-bottom:50px">
                         <h1>{{ instance.title }}</h1>
                         <span class="meta">{{ instance.timestamp }}</span>
-                        <br><br>
-                        <div class="fb-like" data-href="{{ instance.get_absolute_url }}" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
                     </div>
                 </div>
             </div>
@@ -19,18 +18,17 @@
 </header>
 
 
-
-{% if instance.image %}
+{% if instance.imageurl %}
 
 <!--
 <header class="intro-header" style="background-image: url({{ instance.image.url }})">
 -->
   <article>
-      <div class="container">
+      <div class="container" style="align:center;">
           <div class="row">
               <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-                  <img src="{{ instance.image.url }}">
+                  <img src="{{ instance.imageurl }}" >
 
               </div>
           </div>
@@ -53,12 +51,13 @@
 
 {% endif %}
 
-
     <hr>
 
     <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <div class="fb-like" data-href="{{ instance.get_absolute_url }}"
+                      data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
                     {% if  request.user.is_superuser %}
                     <a href = "{{ instance.get_absolute_url }}edit">
                       <button type="submit" class="btn btn-default" align:"right">Edit</button>

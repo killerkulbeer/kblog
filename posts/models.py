@@ -7,14 +7,11 @@ from django.utils.text import slugify
 
 # Create your models here.
 
-def upload_location(instance, filename):
-    return "%s/%s" %(instance.id, filename)
-
 class Post(models.Model):
-    title = models.CharField(max_length=120)
+    title = models.CharField(max_length=150)
     slug = models.SlugField(unique=True)
     content = models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to=upload_location, null=True, blank=True)
+    imageurl = models.URLField(null=True, blank=True)
     updated = models.DateTimeField(auto_now=True,auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
@@ -29,6 +26,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-id","-timestamp", "-updated"]
+
+
 
 def create_slug(instance, new_slug=None):
     slug = slugify(instance.title)
